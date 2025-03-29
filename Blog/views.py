@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 from .serializers import BlogModelSerializer, BlogModelListSerializer,  CommentModelSerializer
 from .models import BlogModel, CommentModel
 
@@ -42,7 +42,7 @@ class BlogModelDeleteView(DestroyAPIView):
 class CommentModelView(ModelViewSet):
     queryset = CommentModel.objects.all()
     serializer_class = CommentModelSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     
     # def perform_create(self, serializer):
     #     return serializer.save(user=self.request.user)

@@ -15,10 +15,11 @@ class BlogModel(models.Model):
 
 
 class CommentModel(models.Model):
-    blog = models.ForeignKey(BlogModel, on_delete=models.CASCADE)
-    commentor = models.ForeignKey(CustomUserModel, on_delete=models.CASCADE)
+    blog = models.ForeignKey(BlogModel, on_delete=models.CASCADE, related_name='comment')
+    commentor = models.ForeignKey(CustomUserModel, on_delete=models.CASCADE, related_name='User_comments')
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return f"{self.blog} commented by {self.commentor}"

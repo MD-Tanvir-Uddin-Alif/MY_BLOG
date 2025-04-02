@@ -28,3 +28,12 @@ class CustomUserUpdateView(RetrieveUpdateAPIView):
     
     def get_object(self):
         return self.request.user
+
+
+
+
+
+# templates buttons 
+
+def signUp_view(request):
+    return render(request, 'signup.html')

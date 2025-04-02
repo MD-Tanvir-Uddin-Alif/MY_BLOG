@@ -12,4 +12,8 @@ urlpatterns = [
     path('login/refresh/', TokenRefreshView.as_view(), name='login_refresh'),
     path('profile/', views.CustomUserProfileView.as_view(), name='profile'),
     path('update/profile/', views.CustomUserUpdateView().as_view(), name='update_profile'),
+    
+    
+    # buttons
+    path('signupbuttons/', views.signUp_view, name='signup_buttons'),
 ]

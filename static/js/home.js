@@ -1,4 +1,5 @@
 window.onload = function() {
+    let token = localStorage.getItem('access_token');
     let userLoggedIN = false;
 
     let createblog = document.getElementById('create-blog');

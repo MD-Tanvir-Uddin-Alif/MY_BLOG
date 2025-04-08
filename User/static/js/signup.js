@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const password = document.getElementById("password").value;
         const password2 = document.getElementById("password2").value;
 
-        console.log(first_name, last_name, username, email, password, password2);
+        // console.log(first_name, last_name, username, email, password, password2);
 
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
         if (!passwordRegex.test(password)){
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if ( response.ok){
             alert("Signup successful! Redirecting to login...");
-            // window.location.href = "/api/user/login/";
+            // window.location.href = "/api/user/loginbutton/";
         }else{
             console.error("Signup failed:", data);
             alert("Signup failed: " + (data.detail || JSON.stringify(data)));

@@ -37,3 +37,6 @@ class CustomUserUpdateView(RetrieveUpdateAPIView):
 
 def signUp_view(request):
     return render(request, 'signup.html')
+
+def loginUp_view(request):
+    return render(request, 'login.html')

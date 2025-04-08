@@ -16,4 +16,5 @@ urlpatterns = [
     
     # buttons
     path('signupbuttons/', views.signUp_view, name='signup_buttons'),
+    path('loginbutton/', views.loginUp_view, name='login_button')
 ]

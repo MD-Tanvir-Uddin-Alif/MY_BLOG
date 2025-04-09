@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("Sign up-- page is working");
+    // console.log("Sign up-- page is working");
 
     const signupForm = document.getElementById("signup-form");
-    console.log(signupForm);
+    // console.log(signupForm);
 
     signupForm.addEventListener("submit", async function (e) {
         e.preventDefault();

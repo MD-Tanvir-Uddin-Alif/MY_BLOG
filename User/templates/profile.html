@@ -1,0 +1,16 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mt-10 text-center">
+    <img id="profile-image" class="w-24 h-24 rounded-full mx-auto mb-4" src="" alt="Profile Image">
+    <h2 class="text-xl font-bold" id="username"></h2>
+    <p id="fullname"></p>
+    <p id="email"></p>
+    <p id="gender"></p>
+    <p id="joined" class="text-sm text-gray-500"></p>
+</div>
+
+<script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}
+

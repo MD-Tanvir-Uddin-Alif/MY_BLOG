@@ -40,3 +40,7 @@ def signUp_view(request):
 
 def loginUp_view(request):
     return render(request, 'login.html')
+
+
+def proifile_view(request):
+    return render(request, 'profile.html')

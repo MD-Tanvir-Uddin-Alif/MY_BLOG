@@ -16,5 +16,6 @@ urlpatterns = [
     
     # buttons
     path('signupbuttons/', views.signUp_view, name='signup_buttons'),
-    path('loginbutton/', views.loginUp_view, name='login_button')
+    path('loginbutton/', views.loginUp_view, name='login_button'),
+    path('profilepage/', views.proifile_view, name='profile_page'),
 ]

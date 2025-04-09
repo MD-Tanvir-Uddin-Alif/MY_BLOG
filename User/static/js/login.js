@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function (){
                 localStorage.setItem("refresh_token", data.refresh);
 
                 alert("Login successful!");
-                window.location.href = "";
+                window.location.href = "/api/user/profilepage/";
             } else {
                 console.log("Login failed: ",data);
                 alert("Login failed: " + (data.detail || JSON.stringify(data)));

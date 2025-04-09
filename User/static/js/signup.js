@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if ( response.ok){
             alert("Signup successful! Redirecting to login...");
-            // window.location.href = "/api/user/loginbutton/";
+            window.location.href = "/api/user/loginbutton/";
         }else{
             console.error("Signup failed:", data);
             alert("Signup failed: " + (data.detail || JSON.stringify(data)));

@@ -18,4 +18,5 @@ urlpatterns = [
     path('signupbuttons/', views.signUp_view, name='signup_buttons'),
     path('loginbutton/', views.loginUp_view, name='login_button'),
     path('profilepage/', views.proifile_view, name='profile_page'),
+    path('edit/profile/', views.editprofile_view, name='edit_profile'),
 ]

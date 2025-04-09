@@ -2,15 +2,38 @@
 {% load static %}
 
 {% block content %}
-<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mt-10 text-center">
-    <img id="profile-image" class="w-24 h-24 rounded-full mx-auto mb-4" src="" alt="Profile Image">
-    <h2 class="text-xl font-bold" id="username"></h2>
-    <p id="fullname"></p>
-    <p id="email"></p>
-    <p id="gender"></p>
-    <p id="joined" class="text-sm text-gray-500"></p>
+<div class="max-w-7xl mx-auto mt-12 px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- User Profile Section -->
+    <div class="col-span-1 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center text-center">
+        <img id="profile-image" class="w-28 h-28 rounded-full border-4 border-gray-200 mb-4" src="" alt="Profile Image">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-1" id="username"></h2>
+        <p id="fullname" class="text-gray-600"></p>
+        <p id="email" class="text-gray-500 text-sm mt-1"></p>
+        <p id="gender" class="text-gray-500 text-sm"></p>
+        <p id="joined" class="text-xs text-gray-400 mt-2"></p>
+
+        <!-- Edit Profile Button -->
+        <a href="{% url "edit_profile" %}" class="mt-4 bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition">
+            Edit Profile
+        </a>
+    </div>
+
+    <!-- User Blogs Section -->
+    <div class="col-span-2 bg-white p-6 rounded-2xl shadow-md">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">My Blogs</h3>
+        <div id="user-blogs" class="space-y-6">
+            <!-- Blog posts will be dynamically inserted here -->
+            <!-- Sample structure:
+            <div class="p-4 bg-gray-50 rounded-lg border hover:shadow transition">
+                <h4 class="text-lg font-semibold text-gray-800">Blog Title</h4>
+                <p class="text-sm text-gray-500">Published on: Date</p>
+                <p class="mt-2 text-gray-700">Short preview or excerpt of the blog...</p>
+            </div>
+            -->
+        </div>
+    </div>
 </div>
 
 <script src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
-

@@ -44,3 +44,6 @@ def loginUp_view(request):
 
 def proifile_view(request):
     return render(request, 'profile.html')
+
+def editprofile_view(request):
+    return render(request, 'edit_profile.html')

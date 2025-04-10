@@ -40,9 +40,16 @@ class BlogModelDeleteView(DestroyAPIView):
 
 
 class CommentModelView(ModelViewSet):
-    queryset = CommentModel.objects.all()
+    # queryset = CommentModel.objects.all()
     serializer_class = CommentModelSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     
-    # def perform_create(self, serializer):
-    #     return serializer.save(user=self.request.user)
+    def get_queryset(self):
+        blog_id = self.request.query_params.get('blog')
+        
+        if blog_id:
+            return CommentModel.objects.filter(blog=blog_id)
+        return CommentModel.objects.all()
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

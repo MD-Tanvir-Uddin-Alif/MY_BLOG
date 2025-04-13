@@ -53,3 +53,12 @@ class CommentModelView(ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
+
+
+
+# rendering 
+
+def all_post(request):
+    return render(request, 'home_posts.html')

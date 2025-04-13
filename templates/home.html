@@ -26,7 +26,12 @@
     </nav>
 
     {% block content %}
+    <div class="max-w-4xl mx-auto mt-10 space-y-10" id="blog-container">
+    </div>
+    
+    <script src="{% static 'js/blog_home.js' %}"></script>
     {% endblock content %}
+
 
 <script src="{%static 'js/home.js' %}"></script>
 </body>

@@ -60,5 +60,5 @@ class CommentModelView(ModelViewSet):
 
 # rendering 
 
-def all_post(request):
-    return render(request, 'home_posts.html')
+def create_post(request):
+    return render(request, 'create_blog.html')

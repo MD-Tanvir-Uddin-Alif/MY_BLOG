@@ -15,7 +15,7 @@
 
             <div>
                 <a href="{% url "home_page" %}" class="text-white text-lg font-medium px-4 hover:text-yellow-300 transition">Home</a>
-                <a href="#" id="create-blog" class="text-white text-lg font-medium px-4 hover:text-yellow-300 transition hidden">Create Blog</a>
+                <a href="{% url "create_post" %}" id="create-blog" class="text-white text-lg font-medium px-4 hover:text-yellow-300 transition hidden">Create Blog</a>
                 <a href="{% url 'profile_page' %}" id="profile" class="text-white text-lg font-medium px-4 hover:text-yellow-300 transition hidden">Profile</a>
                 <a href="{% url 'signup_buttons' %}" id="signup" class="text-white text-lg font-medium px-4 hover:text-yellow-300 transition">Sign Up</a>
                 <a href="{% url 'login_button' %}" id="login" class="text-white text-lg font-medium px-4 hover:text-yellow-300 transition">Login</a>

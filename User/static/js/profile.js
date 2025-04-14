@@ -1,6 +1,10 @@
+let profileid = "";
+
+
 document.addEventListener("DOMContentLoaded", async function () {
     const access = localStorage.getItem("access_token");
     const refresh = localStorage.getItem("refresh_token");
+
 
     async function fetchWithAuth(url, options = {}) {
         options.headers = options.headers || {};
@@ -35,6 +39,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     const res = await fetchWithAuth("http://127.0.0.1:8000/api/user/profile/");
     if (res.ok) {
         const data = await res.json();
+
+        profileid =  data.id;
+
         document.getElementById("username").textContent = data.username;
         document.getElementById("fullname").textContent = `${data.first_name} ${data.last_name}`;
         document.getElementById("email").textContent = data.email;
@@ -53,8 +60,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         const res = await fetchWithAuth("http://127.0.0.1:8000/api/blog/user/blog/");
         if (res.ok) {
             const blogs = await res.json();
-            console.log(blogs);
-
             if (blogs.length === 0) {
                 blogContainer.innerHTML = `<p class="text-gray-500">No blogs found.</p>`;
                 return;
@@ -86,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 async function editBlog(blogId) {
-    // Get the current blog content
+    console.log(profileid);
     const blogTitle = prompt("Enter new blog title");
     const blogContent = prompt("Enter new blog content");
 
@@ -103,34 +108,37 @@ async function editBlog(blogId) {
         body: JSON.stringify({
             title: blogTitle,
             content: blogContent,
+            author: profileid,
         }),
     });
 
     if (res.ok) {
         alert("Blog updated successfully!");
-        location.reload(); // Reload to update the UI
+        location.reload();
     } else {
+        let problrm = await res.json();
+        console.log(problrm);
         alert("Failed to update the blog.");
     }
 }
 
-// async function deleteBlog(blogId) {
-//     const confirmDelete = confirm("Are you sure you want to delete this blog?");
-//     if (!confirmDelete) return;
+async function deleteBlog(blogId) {
+    const confirmDelete = confirm("Are you sure you want to delete this blog?");
+    if (!confirmDelete) return;
 
-//     const access = localStorage.getItem("access_token");
+    const access = localStorage.getItem("access_token");
 
-//     const res = await fetch(`http://127.0.0.1:8000/api/blog/delete/${blogId}/`, {
-//         method: "DELETE",
-//         headers: {
-//             "Authorization": "Bearer " + access,
-//         },
-//     });
+    const res = await fetch(`http://127.0.0.1:8000/api/blog/delete/${blogId}/`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + access,
+        },
+    });
 
-//     if (res.ok) {
-//         alert("Blog deleted successfully!");
-//         location.reload(); // Reload to remove the blog from the UI
-//     } else {
-//         alert("Failed to delete the blog.");
-//     }
-// }
+    if (res.ok) {
+        alert("Blog deleted successfully!");
+        location.reload(); // Reload to remove the blog from the UI
+    } else {
+        alert("Failed to delete the blog.");
+    }
+}

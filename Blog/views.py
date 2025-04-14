@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
@@ -20,6 +22,14 @@ class BlogModelListView(ListAPIView):
     queryset = BlogModel.objects.all()
     permission_classes = [AllowAny]
     serializer_class = BlogModelListSerializer
+
+class UserBlogModelList(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        blog = BlogModel.objects.filter(author=request.user)
+        serializer = BlogModelListSerializer(blog, many=True)
+        return Response(serializer.data)
     
     
 class BlogModelUpdateView(UpdateAPIView):
